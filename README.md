@@ -21,6 +21,6 @@ This project gathers data from environmental and agricultural sensors, processes
 ---
 
 ##  👾 Upcoming project stacks 
-- plough2plough
+- plough2plate
 - LLM for our app
 - tr to make in regional languages
