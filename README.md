@@ -31,7 +31,7 @@ This project gathers data from environmental and agricultural sensors, processes
 
 ![WhatsApp Image 2025-04-23 at 22 11 19_0ffb0d6d](https://github.com/user-attachments/assets/0753eb3c-c679-4656-9e9a-aed2858d406e)
 
--Cirucit diagram 
+- Cirucit diagram 
 
 ![Screenshot 2025-04-23 221250](https://github.com/user-attachments/assets/872484d7-2a68-417a-a379-5b9bb98a0451)
 
