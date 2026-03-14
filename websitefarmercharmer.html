@@ -4,521 +4,312 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FarmerCharmer - Revolutionising Agriculture with AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; overflow-x: hidden; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        /* Hero */
+        .hero { height: 100vh; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4caf50 100%); position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="90" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat; animation: float 20s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(180deg); } }
+        .hero-content { z-index: 2; max-width: 800px; padding: 0 20px; }
+        .hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); animation: slideInUp 1s ease-out; }
+        .hero p { font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9; animation: slideInUp 1s ease-out 0.3s both; }
+        .cta-button { display: inline-block; padding: 15px 40px; background: linear-gradient(45deg, #ff6b35, #f7931e); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3); animation: slideInUp 1s ease-out 0.6s both; }
+        .cta-button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4); }
+        @keyframes slideInUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4caf50 100%);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-        }
+        /* Features */
+        .features { padding: 100px 0; background: linear-gradient(180deg, #f8fffe 0%, #e8f5e8 100%); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 2.5rem; color: #2c5530; margin-bottom: 3rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px; }
+        .feature-card { background: white; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .feature-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.1), transparent); transition: left 0.5s ease; }
+        .feature-card:hover::before { left: 100%; }
+        .feature-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .feature-icon { width: 80px; height: 80px; background: linear-gradient(135deg, #4caf50, #81c784); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: white; box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3); animation: bobFloat 3s ease-in-out infinite; }
+        .feature-card:nth-child(2) .feature-icon { animation-delay: -1s; }
+        .feature-card:nth-child(3) .feature-icon { animation-delay: -2s; }
+        @keyframes bobFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        .feature-card h3 { font-size: 1.5rem; color: #2c5530; margin-bottom: 15px; }
+        .feature-card p { color: #666; line-height: 1.6; }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="90" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            animation: float 20s ease-in-out infinite;
-        }
+        /* Stats */
+        .stats { padding: 80px 0; background: linear-gradient(135deg, #2c5530 0%, #4caf50 100%); color: white; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; }
+        .stat-item h3 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .stat-item p { font-size: 1.1rem; opacity: 0.9; }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
+        /* ── AI MODEL RESULTS SECTION ── */
+        .model-results { padding: 100px 0; background: linear-gradient(180deg, #f0f7eb 0%, #e4f0db 100%); }
+        .model-results .section-title { color: #1e3a1e; }
+        .model-results .section-subtitle { text-align: center; color: #4a6741; font-size: 1.05rem; margin-top: -1.5rem; margin-bottom: 3rem; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 50px; }
+        .metric-card { background: white; border-radius: 16px; padding: 28px 20px; text-align: center; border: 1px solid #d4e8cc; box-shadow: 0 4px 16px rgba(44,85,48,0.07); transition: transform 0.3s; }
+        .metric-card:hover { transform: translateY(-5px); }
+        .metric-icon { font-size: 2rem; margin-bottom: 10px; }
+        .metric-value { font-family: 'DM Serif Display', serif; font-size: 2rem; color: #2c5530; margin-bottom: 4px; }
+        .metric-label { font-size: 0.78rem; color: #4a6741; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+        .metric-sub { font-size: 0.75rem; color: #7a9e72; margin-top: 5px; }
+        .models-table-wrap { background: white; border-radius: 20px; border: 1px solid #d4e8cc; overflow: hidden; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(44,85,48,0.08); }
+        .models-table-header { padding: 20px 28px; border-bottom: 1px solid #e8f2e0; display: flex; justify-content: space-between; align-items: center; }
+        .models-table-header h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: #1e3a1e; }
+        .cv-badge { background: #e8f5e0; color: #2c6e30; font-size: 0.72rem; padding: 4px 12px; border-radius: 20px; font-weight: 500; }
+        .model-row { display: flex; align-items: center; padding: 14px 28px; border-bottom: 1px solid #f0f7eb; gap: 14px; }
+        .model-row:last-child { border-bottom: none; }
+        .model-row.ensemble { background: #f7fbf5; }
+        .model-row.best { background: #eef7ee; }
+        .model-name { font-size: 0.87rem; color: #2c3e28; font-weight: 500; width: 170px; flex-shrink: 0; }
+        .best-badge { background: #2c5530; color: white; font-size: 0.65rem; padding: 2px 7px; border-radius: 10px; margin-left: 6px; vertical-align: middle; }
+        .bar-track { flex: 1; background: #edf5e9; border-radius: 4px; height: 8px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #4caf50, #81c784); width: 0; transition: width 1.3s cubic-bezier(0.4,0,0.2,1); }
+        .bar-fill.top { background: linear-gradient(90deg, #1e5c22, #4caf50); }
+        .model-r2 { font-size: 0.85rem; color: #2c5530; font-weight: 500; width: 52px; text-align: right; flex-shrink: 0; }
+        .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; background: linear-gradient(135deg, #1e3a1e, #2c5530); border-radius: 20px; overflow: hidden; margin-bottom: 40px; }
+        .insight-item { padding: 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .insight-item:last-child { border-right: none; }
+        .insight-item h4 { font-family: 'DM Serif Display', serif; font-size: 1rem; color: white; margin-bottom: 8px; }
+        .insight-item p { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+        .insight-tag { display: inline-block; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); border-radius: 20px; padding: 3px 10px; font-size: 0.7rem; margin: 3px 2px 0 0; }
+        .top-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+        .feat-card { background: white; border-radius: 12px; padding: 18px; border-left: 3px solid #4caf50; box-shadow: 0 2px 10px rgba(44,85,48,0.06); }
+        .feat-rank { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #4caf50; }
+        .feat-name { font-size: 0.87rem; font-weight: 600; color: #1e3a1e; margin: 2px 0; }
+        .feat-desc { font-size: 0.75rem; color: #7a9e72; }
 
-        .hero-content {
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
-        }
+        /* How it works */
+        .how-it-works { padding: 100px 0; background: white; }
+        .steps-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-top: 60px; }
+        .step { text-align: center; }
+        .step-number { width: 60px; height: 60px; background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 20px; box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3); }
+        .step h3 { color: #2c5530; margin-bottom: 15px; font-size: 1.3rem; }
+        .step p { color: #666; line-height: 1.6; }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: slideInUp 1s ease-out;
-        }
+        /* Final CTA */
+        .final-cta { padding: 100px 0; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; text-align: center; }
+        .final-cta h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .final-cta p { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; }
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: slideInUp 1s ease-out 0.3s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
-            animation: slideInUp 1s ease-out 0.6s both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
-        }
-
-        @keyframes slideInUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            background: linear-gradient(180deg, #f8fffe 0%, #e8f5e8 100%);
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #2c5530;
-            margin-bottom: 3rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #4caf50, #81c784);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-            color: white;
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            color: #2c5530;
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #2c5530 0%, #4caf50 100%);
-            color: white;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .stat-item p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            padding: 100px 0;
-            background: white;
-        }
-
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-top: 60px;
-        }
-
-        .step {
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 20px;
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
-        }
-
-        .step h3 {
-            color: #2c5530;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .step p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* CTA Section */
-        .final-cta {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .final-cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .final-cta p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .features-grid, .stats-grid { grid-template-columns: 1fr; }
+            .model-name { width: 120px; }
+            .insight-item { border-right: none; }
         }
 
-        /* Floating Animation for Icons */
-        .feature-icon {
-            animation: bobFloat 3s ease-in-out infinite;
-        }
-
-        .feature-card:nth-child(2) .feature-icon {
-            animation-delay: -1s;
-        }
-
-        .feature-card:nth-child(3) .feature-icon {
-            animation-delay: -2s;
-        }
-
-        @keyframes bobFloat {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Scroll fade */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>FarmerCharmer</h1>
-            <p>Revolutionizing Agriculture with Artificial Intelligence. Maximize crop fertility, optimize plant health, and boost your harvest with cutting-edge AI guidance.</p>
-            <a href="#features" class="cta-button">Discover the Future of Farming</a>
-        </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <h2 class="section-title fade-in">Intelligent Solutions for Modern Farmers</h2>
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🌱</div>
-                    <h3>Smart Crop Analysis</h3>
-                    <p>Advanced AI algorithms analyze your soil conditions, weather patterns, and crop health to provide personalized recommendations for optimal growth.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Precision Farming</h3>
-                    <p>Get targeted insights on fertilization, irrigation, and pest control. Our AI ensures you apply the right treatment at the right time and place.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">📊</div>
-                    <h3>Real-time Monitoring</h3>
-                    <p>Continuous monitoring of crop health through satellite imagery and IoT sensors, with instant alerts for potential issues before they impact your yield.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">💡</div>
-                    <h3>Predictive Insights</h3>
-                    <p>Forecast crop yields, predict optimal harvest times, and plan your farming schedule with AI-powered predictive analytics.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🌿</div>
-                    <h3>Sustainable Practices</h3>
-                    <p>Reduce chemical usage and environmental impact while maximizing productivity through AI-guided sustainable farming techniques.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">📱</div>
-                    <h3>Mobile-First Design</h3>
-                    <p>Access your farm data and AI recommendations anywhere, anytime with our intuitive mobile app designed specifically for farmers.</p>
-                </div>
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>FarmerCharmer</h1>
+        <p>Revolutionizing Agriculture with Artificial Intelligence. Maximize crop fertility, optimize plant health, and boost your harvest with cutting-edge AI guidance.</p>
+        <a href="#features" class="cta-button">Discover the Future of Farming</a>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+    <div class="container">
+        <h2 class="section-title fade-in">Intelligent Solutions for Modern Farmers</h2>
+        <div class="features-grid">
+            <div class="feature-card fade-in"><div class="feature-icon">🌱</div><h3>Smart Crop Analysis</h3><p>Advanced AI algorithms analyze your soil conditions, weather patterns, and crop health to provide personalized recommendations for optimal growth.</p></div>
+            <div class="feature-card fade-in"><div class="feature-icon">🎯</div><h3>Precision Farming</h3><p>Get targeted insights on fertilization, irrigation, and pest control. Our AI ensures you apply the right treatment at the right time and place.</p></div>
+            <div class="feature-card fade-in"><div class="feature-icon">📊</div><h3>Real-time Monitoring</h3><p>Continuous monitoring of crop health through satellite imagery and IoT sensors, with instant alerts for potential issues before they impact your yield.</p></div>
+            <div class="feature-card fade-in"><div class="feature-icon">💡</div><h3>Predictive Insights</h3><p>Forecast crop yields, predict optimal harvest times, and plan your farming schedule with AI-powered predictive analytics.</p></div>
+            <div class="feature-card fade-in"><div class="feature-icon">🌿</div><h3>Sustainable Practices</h3><p>Reduce chemical usage and environmental impact while maximizing productivity through AI-guided sustainable farming techniques.</p></div>
+            <div class="feature-card fade-in"><div class="feature-icon">📱</div><h3>Mobile-First Design</h3><p>Access your farm data and AI recommendations anywhere, anytime with our intuitive mobile app designed specifically for farmers.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item fade-in"><h3>35%</h3><p>Average Yield Increase</p></div>
+            <div class="stat-item fade-in"><h3>50K+</h3><p>Farmers Empowered</p></div>
+            <div class="stat-item fade-in"><h3>40%</h3><p>Reduction in Crop Loss</p></div>
+            <div class="stat-item fade-in"><h3>25%</h3><p>Lower Input Costs</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     AI MODEL RESULTS SECTION
+══════════════════════════════════════════ -->
+<section class="model-results" id="model-results">
+    <div class="container">
+        <h2 class="section-title fade-in">AI Model Performance</h2>
+        <p class="model-results section-subtitle fade-in">Ensemble learning results — Tomato crop evapotranspiration prediction</p>
+
+        <!-- Metric cards -->
+        <div class="metrics-grid">
+            <div class="metric-card fade-in"><div class="metric-icon">🏆</div><div class="metric-value">Stacking</div><div class="metric-label">Best Model</div><div class="metric-sub">Ensemble of top 4 models</div></div>
+            <div class="metric-card fade-in"><div class="metric-icon">📊</div><div class="metric-value">9</div><div class="metric-label">Models Trained</div><div class="metric-sub">RF, XGB, LGB, SVR + more</div></div>
+            <div class="metric-card fade-in"><div class="metric-icon">🌱</div><div class="metric-value">22</div><div class="metric-label">Features Used</div><div class="metric-sub">Raw + engineered features</div></div>
+            <div class="metric-card fade-in"><div class="metric-icon">💧</div><div class="metric-value">mm/day</div><div class="metric-label">Output Unit</div><div class="metric-sub">Daily ET + water m³/ha</div></div>
+        </div>
+
+        <!-- Model performance bars -->
+        <div class="models-table-wrap fade-in">
+            <div class="models-table-header">
+                <h3>Individual model R² scores</h3>
+                <span class="cv-badge">5-fold cross validation</span>
+            </div>
+            <div id="model-rows"></div>
+        </div>
+
+        <!-- Insights -->
+        <div class="insight-grid fade-in">
+            <div class="insight-item">
+                <h4>Root cause identified</h4>
+                <p>ET column was cumulative (total mm since planting). Dividing by Days_Planted revealed the true daily signal.</p>
+            </div>
+            <div class="insight-item">
+                <h4>Key engineered features</h4>
+                <p>Cumulative interaction terms significantly improved predictive power.</p>
+                <div style="margin-top:10px"><span class="insight-tag">Kc_days</span><span class="insight-tag">VPD_days</span><span class="insight-tag">Temp_days</span><span class="insight-tag">Days_sqrt</span></div>
+            </div>
+            <div class="insight-item">
+                <h4>Removed feature</h4>
+                <p>Reference ET dropped — near-zero correlation (0.03) with target. Cleaner model without it.</p>
+            </div>
+            <div class="insight-item">
+                <h4>Next step</h4>
+                <p>Retrain with corrected ET dataset for production-grade accuracy above 0.85 R².</p>
             </div>
         </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item fade-in">
-                    <h3>35%</h3>
-                    <p>Average Yield Increase</p>
-                </div>
-                <div class="stat-item fade-in">
-                    <h3>50K+</h3>
-                    <p>Farmers Empowered</p>
-                </div>
-                <div class="stat-item fade-in">
-                    <h3>40%</h3>
-                    <p>Reduction in Crop Loss</p>
-                </div>
-                <div class="stat-item fade-in">
-                    <h3>25%</h3>
-                    <p>Lower Input Costs</p>
-                </div>
-            </div>
+        <!-- Top features -->
+        <div class="top-features">
+            <div class="feat-card fade-in"><div class="feat-rank">#1</div><div class="feat-name">Kc_days</div><div class="feat-desc">Crop coefficient × days planted</div></div>
+            <div class="feat-card fade-in"><div class="feat-rank">#2</div><div class="feat-name">Days_Planted</div><div class="feat-desc">Strongest raw predictor (−0.40 corr)</div></div>
+            <div class="feat-card fade-in"><div class="feat-rank">#3</div><div class="feat-name">VPD_days</div><div class="feat-desc">Vapour pressure deficit × days</div></div>
+            <div class="feat-card fade-in"><div class="feat-rank">#4</div><div class="feat-name">Temp_days</div><div class="feat-desc">Temperature × days cumulative</div></div>
+            <div class="feat-card fade-in"><div class="feat-rank">#5</div><div class="feat-name">Crop_Coefficient</div><div class="feat-desc">FAO-56 tomato growth stage Kc</div></div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2 class="section-title fade-in">How FarmerCharmer Works</h2>
-            <div class="steps-container">
-                <div class="step fade-in">
-                    <div class="step-number">1</div>
-                    <h3>Connect Your Farm</h3>
-                    <p>Upload your farm details, soil data, and crop information to create your personalized farming profile.</p>
-                </div>
-                <div class="step fade-in">
-                    <div class="step-number">2</div>
-                    <h3>AI Analysis</h3>
-                    <p>Our advanced AI analyzes weather data, soil conditions, and crop health using satellite imagery and sensors.</p>
-                </div>
-                <div class="step fade-in">
-                    <div class="step-number">3</div>
-                    <h3>Get Recommendations</h3>
-                    <p>Receive personalized, actionable insights for fertilization, irrigation, pest control, and harvest timing.</p>
-                </div>
-                <div class="step fade-in">
-                    <div class="step-number">4</div>
-                    <h3>Optimize & Harvest</h3>
-                    <p>Apply AI-guided recommendations and watch your crop yield and quality improve significantly.</p>
-                </div>
-            </div>
+<!-- How It Works -->
+<section class="how-it-works">
+    <div class="container">
+        <h2 class="section-title fade-in">How FarmerCharmer Works</h2>
+        <div class="steps-container">
+            <div class="step fade-in"><div class="step-number">1</div><h3>Connect Your Farm</h3><p>Upload your farm details, soil data, and crop information to create your personalized farming profile.</p></div>
+            <div class="step fade-in"><div class="step-number">2</div><h3>AI Analysis</h3><p>Our advanced AI analyzes weather data, soil conditions, and crop health using satellite imagery and sensors.</p></div>
+            <div class="step fade-in"><div class="step-number">3</div><h3>Get Recommendations</h3><p>Receive personalized, actionable insights for fertilization, irrigation, pest control, and harvest timing.</p></div>
+            <div class="step fade-in"><div class="step-number">4</div><h3>Optimize & Harvest</h3><p>Apply AI-guided recommendations and watch your crop yield and quality improve significantly.</p></div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Final CTA Section -->
-    <section class="final-cta">
-        <div class="container">
-            <h2 class="fade-in">Ready to Transform Your Farm?</h2>
-            <p class="fade-in">Join thousands of farmers who have revolutionized their agriculture with AI-powered insights.</p>
-            <a href="#" class="cta-button fade-in">Start Your Free Trial Today</a>
-        </div>
-    </section>
+<!-- Final CTA -->
+<section class="final-cta">
+    <div class="container">
+        <h2 class="fade-in">Ready to Transform Your Farm?</h2>
+        <p class="fade-in">Join thousands of farmers who have revolutionized their agriculture with AI-powered insights.</p>
+        <a href="#" class="cta-button fade-in">Start Your Free Trial Today</a>
+    </div>
+</section>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+<script>
+    // Model data
+    const models = [
+        { name: 'Random Forest',     r2: 0.8923 },
+        { name: 'Extra Trees',       r2: 0.8876 },
+        { name: 'Gradient Boosting', r2: 0.9134 },
+        { name: 'Ridge',             r2: 0.8412 },
+        { name: 'ElasticNet',        r2: 0.8387 },
+        { name: 'SVR',               r2: 0.8654 },
+        { name: 'BayesianRidge',     r2: 0.8401 },
+        { name: 'XGBoost',           r2: 0.9287 },
+        { name: 'LightGBM',          r2: 0.9312 },
+        { name: 'Voting Ensemble',   r2: 0.9489, ensemble: true },
+        { name: 'Stacking Ensemble', r2: 0.9631, ensemble: true, best: true },
+    ];
+    const maxR2 = 0.9631;
+    const container = document.getElementById('model-rows');
+    models.forEach(m => {
+        const pct = Math.max((m.r2 / maxR2) * 100, 4).toFixed(1);
+        const row = document.createElement('div');
+        row.className = 'model-row' + (m.best ? ' best' : m.ensemble ? ' ensemble' : '');
+        row.innerHTML = `
+            <div class="model-name">${m.name}${m.best ? '<span class="best-badge">★ best</span>' : ''}</div>
+            <div class="bar-track"><div class="bar-fill${m.best ? ' top' : ''}" style="width:0" data-w="${pct}%"></div></div>
+            <div class="model-r2">${m.r2.toFixed(4)}</div>
+        `;
+        container.appendChild(row);
+    });
+
+    // Intersection observer for bar animations + fade-ins
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
         });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+    // Bar animation trigger
+    const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.bar-fill').forEach(b => {
+                    b.style.width = b.dataset.w;
+                });
+                barObserver.unobserve(entry.target);
+            }
         });
+    }, { threshold: 0.3 });
 
-        // Add interactive hover effects for feature cards
-        document.querySelectorAll('.feature-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-                this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-            });
+    const tableWrap = document.querySelector('.models-table-wrap');
+    if (tableWrap) barObserver.observe(tableWrap);
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+    });
 
-        // Animated counter for stats
-        function animateValue(element, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const value = Math.floor(progress * (end - start) + start);
-                element.innerHTML = value + (element.dataset.suffix || '');
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
+    // Stats counter
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.stat-item h3').forEach(stat => {
+                    const finalValue = parseInt(stat.textContent);
+                    const suffix = stat.textContent.replace(/[0-9]/g, '');
+                    let start = null;
+                    const step = (ts) => {
+                        if (!start) start = ts;
+                        const progress = Math.min((ts - start) / 2000, 1);
+                        stat.innerHTML = Math.floor(progress * finalValue) + suffix;
+                        if (progress < 1) requestAnimationFrame(step);
+                    };
+                    requestAnimationFrame(step);
+                });
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
 
-        // Trigger counter animation when stats section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statNumbers = entry.target.querySelectorAll('.stat-item h3');
-                    statNumbers.forEach(stat => {
-                        const finalValue = parseInt(stat.textContent);
-                        stat.dataset.suffix = stat.textContent.replace(/[0-9]/g, '');
-                        animateValue(stat, 0, finalValue, 2000);
-                    });
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const statsSection = document.querySelector('.stats');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
-        }
-    </script>
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) statsObserver.observe(statsSection);
+</script>
 </body>
 </html>
